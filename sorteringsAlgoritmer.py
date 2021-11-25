@@ -1,5 +1,5 @@
 import random, copy
-
+"""
 def bogoSort(items):
     # Kopier den liste, vi har modtaget som parameter, så vi ikke ændrer den originale
     items = items.copy()
@@ -20,6 +20,20 @@ def bogoSort(items):
                 break # Bryd løkken hvis et eneste element er forkert sorteret
     print('Sorteret efter {} forsøg'.format(attempts))
     return items
+"""
+
+
+def insertionSort(item):
+    for round in range(len(item)):
+        x = round
+
+        while x > 0:
+            if item[x-1] > item[x]:
+                item[x-1], item[x] = item[x], item[x-1]
+                #print(myList)
+            x = x-1
+            
+    return item
 
 
 if __name__ == '__main__':
@@ -28,7 +42,7 @@ if __name__ == '__main__':
     for i in range(50):
         random.shuffle(lb)
         ## Kald den funktion, du vil teste
-        ls = bogoSort(l)
+        ls = insertionSort(l)
         ## Kald den funktion, du vil teste
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')
