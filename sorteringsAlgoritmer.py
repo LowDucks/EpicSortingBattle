@@ -23,17 +23,51 @@ def bogoSort(items):
 """
 
 
-def insertionSort(item):
+def insertionSortGammel(item):
     for round in range(len(item)):
         x = round
 
         while x > 0:
             if item[x-1] > item[x]:
                 item[x-1], item[x] = item[x], item[x-1]
-                #print(myList)
+                #print(item)
             x = x-1
-            
+
     return item
+
+
+def insertionSortNyTest(item):
+    for round in range(len(item)):
+        x = round
+
+        while x > 0 and item[x-1] > item[x]:
+            item[x-1], item[x] = item[x], item[x-1]
+            #print(myList)
+            x = x-1
+    return item
+
+def insertionNyIgen(item):
+    for round in range(len(item)):
+
+
+
+
+
+
+def insertionSortStolen(liste):
+    for item in range(1, len(liste)):
+        værdi = liste[item]
+        j = item - 1
+
+        # Compare key with each element on the left of it until an element smaller than it is found
+        # For descending order, change key<array[j] to key>array[j].
+        while j >= 0 and værdi < liste[j]:
+            liste[j + 1] = liste[j]
+            j = j - 1
+
+        # Place key at after the element just smaller than it.
+        liste[j + 1] = værdi
+    return liste
 
 
 if __name__ == '__main__':
@@ -42,7 +76,7 @@ if __name__ == '__main__':
     for i in range(50):
         random.shuffle(lb)
         ## Kald den funktion, du vil teste
-        ls = insertionSort(l)
+        ls = insertionNyTest(l)
         ## Kald den funktion, du vil teste
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')
