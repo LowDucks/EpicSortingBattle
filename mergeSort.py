@@ -3,18 +3,31 @@ myList = [4, 3, 3, 2, 5, 7, 5, 3, 2, 6, 8, 9, 6, 5, 4, 4]
 
 def mergeSort(item):
 
-    if len(item) > 2:
+    split = len(item)//2
+    splitLow = item[:split] # List Comprehension
+    splitHigh = item[split:] # List comprehension
 
-        split = len(item)//2
-        splitLow = item[:split] # List Comprehension
-        splitHigh = item[split:] # List comprehension
-        print(splitLow, splitHigh)
+    if len(splitLow) > 1:
+        splitLow = mergeSort(splitLow)
+    if len(splitHigh) > 1:
+        splitHigh = mergeSort(splitHigh)
 
-        mergeSort(splitLow)
+    nyItem = []
 
-        mergeSort(splitHigh)
+    while len(nyItem) < len(item):
+        if len(splitLow) > 0 and len(splitHigh) > 0:
+            if splitLow[0] > splitHigh[0]:
+                nyItem.append(splitHigh.pop(0))
+            else:
+                nyItem.append(splitLow.pop(0))
+        elif len(splitLow) == 0:
+            nyItem.append(splitHigh.pop(0))
+        else:
+            nyItem.append(splitLow.pop(0))
+        
 
-    return item
+    return nyItem
+
 
 
 print(mergeSort(myList))
